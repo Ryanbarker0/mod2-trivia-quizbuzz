@@ -10,12 +10,6 @@ User.create(name: "Amalie", password: "12345")
 User.create(name: "Sang", password: "12345")
 User.create(name: "Barney", password: "12345")
 
-#Games:
-Game.create(user_id: 1, category_id: 1, score: 700)
-Game.create(user_id: 2, category_id: 1, score: 400)
-Game.create(user_id: 3, category_id: 2, score: 900)
-Game.create(user_id: 4, category_id: 4, score: 200)
-
 #Categories:
 Category.create(name: "Science")
 Category.create(name: "History")
@@ -102,3 +96,10 @@ Answer.create(question_id: 8, answer: "80kg", correct: false)
 Answer.create(question_id: 8, answer: "120kg", correct: false)
 Answer.create(question_id: 8, answer: "160kg", correct: false)
 Answer.create(question_id: 8, answer: "180kg", correct: true)
+
+
+#Games:
+Game.create(user_id: 1, category_id: 1, score: 700)
+Game.create(user_id: 2, category_id: 1, score: 400)
+Game.create(user_id: 3, category_id: 2, score: 900)
+Game.create(user_id: 4, category_id: 4, score: 200)
