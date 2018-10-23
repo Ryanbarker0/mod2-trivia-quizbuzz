@@ -1,0 +1,4 @@
+<h2><%= @question.content %></h2>
+
+
+<%= link_to "Next Question", @category.questions.find(@question.id + 1) %>
