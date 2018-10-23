@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
     end
 
     @random_question = session[:question_ids].sample
+    session[:score] = 0
   end
 
   private
