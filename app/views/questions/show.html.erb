@@ -7,5 +7,3 @@
   <li><%= link_to answer.content, answer_url(answer) %></li>
 </ul>
 <% end %>
-
-<%= link_to "Next Question", @category.questions.find(session[:question_ids].sample) %>

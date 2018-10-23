@@ -7,16 +7,15 @@ class QuestionsController < ApplicationController
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
     if session[:question_number] > 10
-      session[:question_number] = nil
-      session[:question_ids].clear
+      session.delete([:question_number])
+      session.delete([:question_ids])
       Game.create(user_id: session[:user_id], category_id: @category.id, score: session[:score])
-      # session[:score] = nil
       redirect_to '/summary'
     end
   end
 
   def summary
-    
+
   end
 
   private
