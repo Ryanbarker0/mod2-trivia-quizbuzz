@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to categories_path
     else
-      flash[:message] = "Username and password don't match"
+      flash[:message] = "Invalid Username or Password"
       redirect_to login_path
     end
   end

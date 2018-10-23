@@ -1,3 +1,5 @@
 <h1><%= @category.name %></h1>
 
-<h2> <%= link_to "Click here to start quiz!", @category.questions.find(1) %>
+
+
+<h2> <%= link_to "Click here to start quiz!", @category.questions.find(@random_question) %>
