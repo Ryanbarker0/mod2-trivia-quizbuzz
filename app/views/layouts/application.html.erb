@@ -5,14 +5,61 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="<%= root_path %>">
+        <%= image_tag('quizbuzz-nav-logo.png', width: '112') %>
+        <!-- <img src="quizbuzz-nav-logo.png" width="112" height="28"> -->
+      </a>
 
-  <body>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-    <%= yield %>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          All Categories
+        </a>
 
+        <a class="navbar-item">
+          Teams
+        </a>
 
-  </body>
-</html>
+          <a class="navbar-item">
+            Challenges
+          </a>
+
+            <a class="navbar-item">
+              About
+            </a>
+
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Profile</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<hr>
+    <body>
+      <div class="column side">
+      </div>
+
+      <%= yield %>
+
+    </body>
+  </html>

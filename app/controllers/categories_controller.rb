@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    session[:category] = @category
     session[:question_number] = 0
     session[:question_ids] = Array.new
     @category.questions.each do |question|
@@ -25,6 +26,9 @@ class CategoriesController < ApplicationController
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+    unless session.include? :user_id
+      # head(:forbidden)
+      redirect_to '/'
+    end
   end
 end

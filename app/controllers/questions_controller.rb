@@ -15,11 +15,6 @@ class QuestionsController < ApplicationController
   end
 
   def summary
-<<<<<<< HEAD
-    # @category = session[:category]
-=======
-
->>>>>>> 53ee9366e9fb6daa6878ab69a5ac614815a383e3
   end
 
   private
