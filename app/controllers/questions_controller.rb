@@ -3,12 +3,8 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show]
   before_action :set_category, only: [:category_question, :show]
 
-
-
-
   def show
-    byebug
-    @@category_questions.delete(category_question)
+    session[:question_ids].delete(@question.id)
   end
 
   private
