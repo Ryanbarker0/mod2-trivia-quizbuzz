@@ -5,6 +5,12 @@ class QuestionsController < ApplicationController
 
   def show
     session[:question_ids].delete(@question.id)
+    session[:question_number] += 1
+    if session[:question_number] > 10
+      session[:question_number] = nil
+      session[:question_ids].clear
+      redirect_to categories_url
+    end
   end
 
   private

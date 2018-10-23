@@ -1,4 +1,3 @@
 <h2><%= @question.content %></h2>
 
-
 <%= link_to "Next Question", @category.questions.find(session[:question_ids].sample) %>

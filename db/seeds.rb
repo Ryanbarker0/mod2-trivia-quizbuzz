@@ -97,6 +97,30 @@ Answer.create(question_id: 8, answer: "120kg", correct: false)
 Answer.create(question_id: 8, answer: "160kg", correct: false)
 Answer.create(question_id: 8, answer: "180kg", correct: true)
 
+#Question 9.
+Question.create(content: "Where is the best place to hide a fart?", category_id: 1)
+#Answers
+Answer.create(question_id: 9, answer: "A Jar", correct: false)
+Answer.create(question_id: 9, answer: "Cushion", correct: false)
+Answer.create(question_id: 9, answer: "Mouth", correct: false)
+Answer.create(question_id: 9, answer: "Water Balloon", correct: true)
+
+#Question 10.
+Question.create(content: "How Much Does an Elephant Penis Cost?", category_id: 1)
+#Answers
+Answer.create(question_id: 10, answer: "One hair past a freckle", correct: false)
+Answer.create(question_id: 10, answer: "A bucket of sand", correct: false)
+Answer.create(question_id: 10, answer: "£50", correct: false)
+Answer.create(question_id: 10, answer: "£1", correct: true)
+
+#Question 11.
+Question.create(content: "What do you get when you cross a wallet with a hose?", category_id: 1)
+#Answers
+Answer.create(question_id: 11, answer: "A fish bowl", correct: false)
+Answer.create(question_id: 11, answer: "The moon", correct: false)
+Answer.create(question_id: 11, answer: "A point of view", correct: false)
+Answer.create(question_id: 11, answer: "A race war", correct: true)
+
 
 #Games:
 Game.create(user_id: 1, category_id: 1, score: 700)
