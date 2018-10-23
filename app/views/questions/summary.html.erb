@@ -3,3 +3,19 @@
 <h4>You scored a whopping <%= session[:score] %> points!</h4>
 <br>
 <p>Nice try for a pip squeak!</p>
+
+<% session.delete([:score]) %>
+<% session[:score] = 0 %>
+<% @category = Category.find(session[:category]["id"]) %>
+<% session[:question_number] = 0 %>
+<% session[:question_ids] = Array.new %>
+
+<% @category.questions.each do |question| %>
+  <%  session[:question_ids] << question.id %>
+<% end %>
+<% @random_question = session[:question_ids].sample %>
+
+
+<%= link_to "Play again!", @category.questions.find(@random_question)%>
+  <br>
+<%= link_to "All Categories", categories_path %>
