@@ -1,3 +1,11 @@
 <h2><%= @question.content %></h2>
+<p>Question: <%= session[:question_number] %>/10</p>
+<p>Score: <%= session[:score] %></p>
+
+ <% @question.answers.each do |answer| %>
+<ul>
+  <li><%= answer.answer %></li>
+</ul>
+<% end %>
 
 <%= link_to "Next Question", @category.questions.find(session[:question_ids].sample) %>
