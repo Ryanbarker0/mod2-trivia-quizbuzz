@@ -10,13 +10,16 @@ class QuestionsController < ApplicationController
       session.delete([:question_number])
       session.delete([:question_ids])
       Game.create(user_id: session[:user_id], category_id: @category.id, score: session[:score])
-      # session[:score] = nil
       redirect_to '/summary'
     end
   end
 
   def summary
+<<<<<<< HEAD
     # @category = session[:category]
+=======
+
+>>>>>>> 53ee9366e9fb6daa6878ab69a5ac614815a383e3
   end
 
   private
