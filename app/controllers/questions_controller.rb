@@ -5,10 +5,12 @@ class QuestionsController < ApplicationController
 
   def show
     session[:question_ids].delete(@question.id)
+    session[:score] = 0
     session[:question_number] += 1
     if session[:question_number] > 10
       session[:question_number] = nil
       session[:question_ids].clear
+      Game.create(user_id: session[:user_id], category_id: @category.id, score: session[:score])
       redirect_to categories_url
     end
   end

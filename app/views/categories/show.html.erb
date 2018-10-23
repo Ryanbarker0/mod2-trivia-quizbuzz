@@ -2,4 +2,4 @@
 
 
 
-<h2> <%= link_to "Click here to start quiz!", category_path, method: 'post' %>
+<h2> <%= link_to "Click here to start quiz!", @category.questions.find(@random_question) %>
