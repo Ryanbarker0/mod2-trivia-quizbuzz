@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   before_action :set_category, only: [:show]
   before_action :require_login
+  helper_method :category_leaderboard
 
   def index
     @categories = Category.all
@@ -17,6 +18,12 @@ class CategoriesController < ApplicationController
 
     @random_question = session[:question_ids].sample
     session[:score] = 0
+  end
+
+  def category_leaderboard
+    #selects all the instances of the Game class that have the same category id as the category you are currently viewing/in
+    #then sorts this array of game objects by their score in desceding order and takes only the first 10
+    Game.select{|game| game.category_id == @category.id}.sort_by{|game| game.score}.reverse.take(10)
   end
 
   private
