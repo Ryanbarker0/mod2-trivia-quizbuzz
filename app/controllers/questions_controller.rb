@@ -1,9 +1,11 @@
 class QuestionsController < ApplicationController
 
   before_action :set_question, only: [:show]
-  before_action :set_category, only: [:category_question, :show]
+  before_action :set_category, only: [:show]
 
   def show
+    request_api?
+    # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
     if session[:question_number] > 10
@@ -16,6 +18,13 @@ class QuestionsController < ApplicationController
 
   def summary
   end
+
+  def request_api?
+    if !!!$redis.get("#{@category.id}")
+      api_request($category_api_number)
+    end
+  end
+
 
   private
 

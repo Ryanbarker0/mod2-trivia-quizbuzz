@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    category_number_assignment
     session[:category] = @category
     session[:question_number] = 0
     session[:question_ids] = Array.new
@@ -24,6 +25,13 @@ class CategoriesController < ApplicationController
     #selects all the instances of the Game class that have the same category id as the category you are currently viewing/in
     #then sorts this array of game objects by their score in desceding order and takes only the first 10
     Game.select{|game| game.category_id == @category.id}.sort_by{|game| game.score}.reverse.take(10)
+  end
+
+  def category_number_assignment
+    case @category.name
+    when "Science & Nature"
+      $category_api_number = 17
+    end
   end
 
   private
