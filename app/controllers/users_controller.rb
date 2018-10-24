@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -24,6 +25,23 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if params[:current_password] == @user.password
+      @user.update(user_update_params)
+      flash.now[:success] = "Your changes have been saved"
+      redirect_to user_url(@user)
+    else
+      flash[:errors] = "Current Password Is Incorrect"
+      render :edit
+    end
+  end
+
+  def destroy
+  end
+
   private
 
   def set_user
@@ -34,6 +52,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
 
-
+  def user_update_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
 end

@@ -8,5 +8,4 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   validates :password, length: {minimum: 5}
 
-
 end
