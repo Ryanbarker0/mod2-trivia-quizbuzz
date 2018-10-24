@@ -1,4 +1,4 @@
-<h2 class='title'><%= @question.content %></h2>
+<h2 class='title' align='center'><%= @question.content %></h2>
 
 <div class="column side">
 </div>
@@ -11,7 +11,6 @@
  <% @question.answers.each do |answer| %>
 
 <p><%= link_to answer.content, answer_path(answer), class: 'button' %></p>
-<br>
 
 <% end %>
 <hr>

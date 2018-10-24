@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body>
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="<%= root_path %>">
@@ -55,23 +56,24 @@
       </div>
     </nav>
 <hr>
-    <body>
-      <div class="column side">
-      </div>
 
+
+    <div class='page is-content'>
       <%= yield %>
+</div>
 
+<!-- <footer class="footer">
+<div class="content has-text-centered">
+<p>
+  <strong>QuizzBuzz</strong></br> by <a href="https://rgbarker.com">Ryan Barker</a> & <a href="https://barneyloosemore.com">Barney Loosemore</a>.</br></br> The source code is licensed
+  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved.
+</p>
+</div>
+</footer> -->
 
 
     </body>
 
-    <!-- <footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>QuizzBuzz</strong> by <a href="https://rgbarker.com">Ryan Barker</a> & <a href="https://google.com">Barney Loosemore</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved.
-    </p>
-  </div>
-</footer> -->
+
 
   </html>
