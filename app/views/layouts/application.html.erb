@@ -9,71 +9,68 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="<%= root_path %>">
-        <%= image_tag('quizbuzz-nav-logo.png', width: '112') %>
-        <!-- <img src="quizbuzz-nav-logo.png" width="112" height="28"> -->
-      </a>
 
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item", href="<%= categories_path %>">
-          All Categories
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="<%= root_path %>">
+          <%= image_tag('quizbuzz-nav-logo.png', width: '112') %>
+          <!-- <img src="quizbuzz-nav-logo.png" width="112" height="28"> -->
         </a>
 
-        <a class="navbar-item">
-          Teams
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" ,="," href="<%= categories_path %>">
+            All Categories
+          </a>
+
+          <a class="navbar-item">
+            Teams
+          </a>
 
           <a class="navbar-item">
             Challenges
           </a>
 
-            <a class="navbar-item">
-              About
-            </a>
+          <a class="navbar-item">
+            About
+          </a>
 
-          </div>
         </div>
+      </div>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% if current_user %>
+              <a class="button is-primary" href="<%= user_path(session[:user_id]) %>">
                 <strong>Profile</strong>
               </a>
-            </div>
+            <% else %>
+              <a class="button is-primary" href="/login">
+                <strong>Login</strong>
+              </a>
+            <% end %>
           </div>
         </div>
       </div>
-    </nav>
-<hr>
+    </div>
+  </nav>
+  <hr>
 
+  <div class='page is-content'>
+    <%= yield %>
+  </div>
 
-    <div class='page is-content'>
-      <%= yield %>
-</div>
+  <!-- <footer class="footer"> <div class="content has-text-centered"> <p> <strong>QuizzBuzz</strong></br> by <a href="https://rgbarker.com">Ryan Barker</a> & <a href="https://barneyloosemore.com">Barney Loosemore</a>.</br></br> The source code is
+  licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved. </p> </div> </footer> -->
 
-<!-- <footer class="footer">
-<div class="content has-text-centered">
-<p>
-  <strong>QuizzBuzz</strong></br> by <a href="https://rgbarker.com">Ryan Barker</a> & <a href="https://barneyloosemore.com">Barney Loosemore</a>.</br></br> The source code is licensed
-  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved.
-</p>
-</div>
-</footer> -->
+</body>
 
-
-    </body>
-
-
-
-  </html>
+</html>
