@@ -1,10 +1,17 @@
-<h1>All Categories</h1>
+<h3 class="title">All Categories</h3>
+<div class="column side">
 
+</div>
 
+<div class="column middle">
 <% @categories.each do |cat| %>
 
 <ul>
   <li><%= link_to cat.name, category_url(cat) %></li>
 </ul>
 <% end %>
+
+<br>
+<hr>
 <%= link_to "Logout", logout_path, method: 'delete' %>
+</div>

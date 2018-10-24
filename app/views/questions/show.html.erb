@@ -1,9 +1,18 @@
-<h2><%= @question.content %></h2>
-<p>Question: <%= session[:question_number] %>/10</p>
-<p>Score: <%= session[:score] %></p>
+<h2 class='title'><%= @question.content %></h2>
 
+<div class="column side">
+</div>
+
+<div class="column middle">
+
+<p><strong>Question: <%= session[:question_number] %>/10</strong></p>
+<p><strong>Score: <%= session[:score] %></strong></p>
+<hr>
  <% @question.answers.each do |answer| %>
-<ul>
-  <li><%= link_to answer.content, answer_path(answer) %></li>
-</ul>
+
+<p><%= link_to answer.content, answer_path(answer), class: 'button' %></p>
+<br>
+
 <% end %>
+<hr>
+</div>
