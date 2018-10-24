@@ -29,12 +29,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:current_password] == @user.password
+    #checks to see if :curren_password matches password in db
+    #if it does, updates it with the new desired password
+    if @user.try(:authenticate, params[:user][:current_password])
       @user.update(user_update_params)
       flash.now[:success] = "Your changes have been saved"
-      redirect_to user_url(@user)
+      render :show
     else
-      flash[:errors] = "Current Password Is Incorrect"
+      flash[:error] = "Current Password Is Incorrect"
       render :edit
     end
   end

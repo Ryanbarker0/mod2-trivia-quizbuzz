@@ -1,9 +1,30 @@
-<h1><%= @user.name %></h1>
+<h1 class='title' align='center'><%= @user.name %>'s Profile</h1>
 
-<% if flash.now[:success]  %>
+<div class="column side">
 
-<p><%= flash.now[:success] %></p>
+  <aside class='menu'>
+    <p class='menu-label'>Account Management</p>
+
+    <ul class='menu-list'>
+      <li>
+        <a href="<%= edit_user_url %>">Update Password</a>
+      </li>
+      <li>
+        <a>Delete Account</a>
+      </li>
+    </ul>
+
+  </aside>
+
+</div>
+
+</div>
+
+<div class="column middle">
+
+<% if flash.now[:success] %>
+
+  <p class='notification is-success' align='center'><%= flash.now[:success] %></p>
 
 <% end %>
-
-<%= link_to "Change Username or Password", edit_user_url %>
+</div>

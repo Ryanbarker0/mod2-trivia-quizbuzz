@@ -3,12 +3,10 @@
 <div class="column side"></div>
 <div class="column middle">
   <hr>
-  <%  if flash[:errors] %>
+  <%  if flash[:error] %>
 
-    <% flash[:errors].each do |message| %>
-      <p class='notification is-danger'><%= message %></p>
+      <p class='notification is-danger'><%= flash[:error] %></p>
     <% end %>
-  <% end %>
   <div class="field">
     <%= form_for @user do |f| %>
 

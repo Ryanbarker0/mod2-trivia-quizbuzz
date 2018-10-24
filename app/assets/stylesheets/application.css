@@ -57,3 +57,6 @@
  table td, table th {
     text-align: center;
 }
+.menu-list {
+    width: 60%;
+}
