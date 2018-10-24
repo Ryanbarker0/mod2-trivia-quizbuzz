@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    #checks to see if :curren_password matches password in db
+    #checks to see if :current_password matches password in db
     #if it does, updates it with the new desired password
     if @user.try(:authenticate, params[:user][:current_password])
       @user.update(user_update_params)

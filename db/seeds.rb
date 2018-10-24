@@ -123,7 +123,7 @@ Answer.create(question_id: 11, content: "A race war", correct: true)
 
 
 #Games:
-Game.create(user_id: 1, category_id: 1, score: 700)
+Game.create(user_id: 1, category_id: 1, score: 300)
 Game.create(user_id: 2, category_id: 1, score: 400)
 Game.create(user_id: 3, category_id: 2, score: 900)
 Game.create(user_id: 4, category_id: 4, score: 200)
