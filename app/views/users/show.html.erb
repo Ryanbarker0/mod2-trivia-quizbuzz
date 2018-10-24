@@ -1,4 +1,5 @@
 <h1 class='title' align='center'><%= @user.name %>'s Profile</h1>
+<hr>
 
 <div class="column side">
 
@@ -12,6 +13,7 @@
       <li>
         <a>Delete Account</a>
       </li>
+      <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
     </ul>
 
   </aside>
