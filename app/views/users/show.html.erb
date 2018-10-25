@@ -1,52 +1,5 @@
-<h1 class='title' align='center'><%= @user.name %>'s Profile</h1>
-<hr>
-
-<div class="column side">
-
-
-
-
-  <p class='menu-label'>Points Total</p>
-    <p class='points'><%= all_total_points %></p>
-
-  <hr>
-  <p class='menu-label'>Achievements</p>
-    <p class='achievements'>
-      <% if all_total_points > 2000 %>
-      <%= '"Not bad.. for a rookie."' %>
-      <% elsif all_total_points > 5000 %>
-      <%= '"Hmmmm.. you\'re getting good at this."' %>
-      <% elsif all_total_points > 10000 %>
-      <%= '"You need to stop playing this shite."' %>
-      <% end %>
-    </p>
-
-
-  <hr>
-  <aside class='menu'>
-    <p class='menu-label'>Account Management</p>
-
-    <ul class='menu-list'>
-      <li>
-        <a href="<%= edit_user_url %>">Update Password</a>
-      </li>
-      <li>
-        <a>Delete Account</a>
-      </li>
-      <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
-    </ul>
-
-  </aside>
-
-</div>
-
-</div>
-
-<div class="column middle">
-
-<% if flash.now[:success] %>
-
-  <p class='notification is-success' align='center'><%= flash.now[:success] %></p>
-
+<% if current_user == User.find(params[:id]) %>
+  <%= render 'user-profile' %>
+<% else %>
+  <%= render 'outside-user-view' %>
 <% end %>
-</div>

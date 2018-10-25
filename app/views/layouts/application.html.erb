@@ -12,7 +12,11 @@
 
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
+        <% if current_user  %>
         <a class="navbar-item" href="<%= root_path %>">
+          <% else %>
+          <a class="navbar-item" href="<%= feed_path %>">
+            <% end %>
           <%= image_tag('quizbuzz-nav-logo.png', width: '112') %>
           <!-- <img src="quizbuzz-nav-logo.png" width="112" height="28"> -->
         </a>
@@ -52,7 +56,8 @@
               <a class="button is-primary" href="<%= user_path(session[:user_id]) %>">
                 <strong>Profile</strong>
               </a>
-              <a><strong><%= link_to "Logout", logout_path, method: 'delete', class: 'button is-primary' %></strong>
+              <a>
+                <strong><%= link_to "Logout", logout_path, method: 'delete', class: 'button is-primary' %></strong>
               </a>
             <% else %>
               <a class="button is-primary" href="/login">
@@ -64,18 +69,41 @@
       </div>
     </div>
   </nav>
+  <script type="text/javascript">
+    $(document).ready(function () {
 
+      // Check for click events on the navbar burger icon
+      $(".navbar-burger").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+
+      });
+    });
+  </script>
 
   <section class="section">
     <div class="container">
-    <%= yield %>
+      <%= yield %>
     </div>
   </section>
 
-
-
-  <footer class="footer"> <div class="content has-text-centered"> <p> <strong>QuizzBuzz</strong></br> by <a href="https://rgbarker.com">Ryan Barker</a> & <a href="https://barneyloosemore.com">Barney Loosemore</a>.</br></br> The source code is
-  licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved. </p> </div> </footer>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>QuizzBuzz</strong>
+      </br>
+      by
+      <a href="https://rgbarker.com">Ryan Barker</a>
+      &
+      <a href="https://barneyloosemore.com">Barney Loosemore</a>.</br>
+  </br>
+  The source code is licensed
+  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. All Rights Reserved.
+</p>
+</div>
+</footer>
 
 </body>
 
