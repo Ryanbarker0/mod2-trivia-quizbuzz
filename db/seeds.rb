@@ -11,7 +11,7 @@ User.create(name: "Sang", password: "12345")
 User.create(name: "Barney", password: "12345")
 
 #Categories:
-Category.create(name: "Science")
+Category.create(name: "Science & Nature")
 Category.create(name: "History")
 Category.create(name: "Geography")
 Category.create(name: "Politics")
