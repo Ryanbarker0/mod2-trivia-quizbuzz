@@ -11,7 +11,6 @@ class CategoriesController < ApplicationController
 
   def show
     # category_number_assignment
-    # request_api?
     session[:category] = @category
     session[:question_number] = 0
     session[:question_ids] = Array.new
@@ -21,6 +20,8 @@ class CategoriesController < ApplicationController
 
     @random_question = session[:question_ids].sample
     session[:score] = 0
+    session[:streak] = 0
+    session[:hot_streak] = false
   end
 
   def category_leaderboard
@@ -30,6 +31,9 @@ class CategoriesController < ApplicationController
   end
 
 
+
+  def feed
+  end
 
   private
 
