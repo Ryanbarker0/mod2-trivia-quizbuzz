@@ -1,40 +1,27 @@
 <!-- <nav class='level'> -->
-<div class="container">
-  <div class="level">
-    <div class="level-left">
-      <div class="section">
-<h1 class='title' align="center">TEXT</h1>
-      </div>
+<h3 class='title' align='center'><%= @category.name %></h3>
+<hr>
 
-    </div>
-    <div class="level-right">
-<h1 class='title' align="center">TEXT</h1>
+<div class="level">
+  <div class='level-left'>
+
+    <div class="section">
+      <div class='column'>
+        <div align='center'>
+          <%= link_to "Click here to start Quiz!", @category.questions.find(@random_question), class: 'button is-success' %>
+          <hr>
+          <%= link_to "Click here to start Hot Streak!", hot_streak_path, class: 'button is-danger' %>
+          <hr>
+          <%= link_to "Return to All Categories", categories_path, class: 'button' %>
+        </div>
+      </div>
     </div>
   </div>
 
-</div>
-<div class="level">
-<div class='level-left'>
+  <div class='level-right'>
+    <div class="section">
 
-  <div class="section">
-    <!-- <h3 class='title' align='center'><%= @category.name %></h3> -->
-
-    <div class='column middle'>
-      <hr>
-
-        <%= link_to "Click here to start quiz!", @category.questions.find(@random_question), class: 'button' %>
-        <hr>
-        <%= link_to "Click here to start hot streak!", hot_streak_path, class: 'button' %>
-        <hr>
-        <%= link_to "Return to All Categories", categories_path, class: 'button' %>
-
-</div>
-    </div>
-</div>
-<div class='level-right'>
-  <div class="section">
-
-        <h4 class='title' align='center'>Top Scorers</h4>
+      <h4 class='title' align='center'>Top Scorers</h4>
 
         <table class="table is-striped is-hoverable" align='center'>
           <thead>
@@ -57,6 +44,6 @@
             <% end %>
           </table>
         </div>
-  </div>
       </div>
     </div>
+  </div>

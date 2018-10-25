@@ -1,94 +1,54 @@
-
 <!-- <div class='feed'> -->
-<div class = "level">
-  <div class="level-left">
+
+<p><%= link_to "Play Now", categories_path, class: 'button is-large is-fullwidth is-success' %></p>
+
+<div class="level">
+  <div class="section"></div>
+
+  <div class="level-right">
     <div class="section">
       <h2 class="title" align='center'>Feed</h2>
       <% Game.order("created_at").reverse.take(10).each do |game| %>
-          <hr>
-          <div class="box">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <article class="media">
-              <div class="media-left", align="center">
-                <figure class="image is-64x64">
-                  <%= image_tag 'idea.png' %>
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong><%= link_to game.user.name, game.user %></strong> <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
-                    <br>
-                    Scored
-                    <% case game.score %>
+        <hr>
+        <div class="box">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <article class="media">
+            <div class="media-left" ,="," align="center">
+              <figure class="image is-64x64">
+                <%= image_tag 'idea.png' %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= link_to game.user.name, game.user %></strong>
+                  <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
+                  <br>
+                  Scored
+                  <% case game.score %>
                     <% when (0..400) %>
                       <span class="bad-game">
                         <%= game.score %>
                       </span>
-                    <% when (500..700) %>
-                      <span class="decent-game">
-                        <%= game.score %>
-                      </span>
-                    <% when (800..1000) %>
-                      <span class="good-game">
-                        <%= game.score %>
-                      </span>
-                    <% end %>
-                    points in <%= game.category.name %>!
-                  </p>
-                </div>
+                      <% when (500..700) %>
+                        <span class="decent-game">
+                          <%= game.score %>
+                        </span>
+                        <% when (800..1000) %>
+                          <span class="good-game">
+                            <%= game.score %>
+                          </span>
+                        <% end %>
+                        points in
+                        <%= game.category.name %>!
+                      </p>
+                    </div>
+                  </div>
+                </article>
               </div>
-            </article>
+            <% end %>
           </div>
-      <% end %>
-
-    </div>
-
-  </div>
-  <div class = "level-right">
-    <div class="section">
-  <h2 class="title" align='center'>Feed</h2>
-  <% Game.order("created_at").reverse.take(10).each do |game| %>
-      <hr>
-      <div class="box">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <article class="media">
-          <div class="media-left", align="center">
-            <figure class="image is-64x64">
-              <%= image_tag 'idea.png' %>
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong><%= link_to game.user.name, game.user %></strong> <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
-                <br>
-                Scored
-                <% case game.score %>
-                <% when (0..400) %>
-                  <span class="bad-game">
-                    <%= game.score %>
-                  </span>
-                <% when (500..700) %>
-                  <span class="decent-game">
-                    <%= game.score %>
-                  </span>
-                <% when (800..1000) %>
-                  <span class="good-game">
-                    <%= game.score %>
-                  </span>
-                <% end %>
-                points in <%= game.category.name %>!
-              </p>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
-  <% end %>
-<!-- </div> -->
-</div>
-</div>
-</div>
 
-
-<% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>
+      <% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>

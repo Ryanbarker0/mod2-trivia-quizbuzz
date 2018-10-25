@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.2",
+    "lodash.update": "^4.10.2",
     "modernizr": "3.6.0"
   },
   "description": "# API",
