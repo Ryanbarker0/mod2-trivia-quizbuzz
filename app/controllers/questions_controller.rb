@@ -2,9 +2,13 @@ class QuestionsController < ApplicationController
   helper_method :score_response, :highest_score_for_user_in_category, :high_score?
 
   before_action :set_question, only: [:show]
-  before_action :set_category, only: [:category_question, :show]
+  before_action :set_category, only: [:show]
 
   def show
+    request_api?
+    binding.pry
+
+    # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
     if session[:question_number] > 10
@@ -55,6 +59,17 @@ class QuestionsController < ApplicationController
       responses[:zero_score].shuffle[0]
     end
   end
+
+  def request_api?
+    if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
+      api_request($category_api_number)
+    end
+  end
+
+  def find_question_data
+    $redis.hgetall
+  end
+
 
   private
 
