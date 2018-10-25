@@ -1,22 +1,21 @@
-
 <h3 class="title" align="center">Login</h3>
 
-<div class="column">
+<div class="column middle">
   <hr>
   <% if flash[:message] %>
-  <p class='notification is-danger'><%= flash[:message] %></p>
+    <p class='notification is-danger'><%= flash[:message] %></p>
   <% end %>
-<div class="field">
-<%= form_tag '/login' do %>
-<label class="label" for="username">Username:</label>
-<%= text_field_tag :'user[name]', nil, class:'input' %>
+  <div class="field">
+    <%= form_tag '/login' do %>
+    <label class="label" for="username">Username:</label>
+    <%= text_field_tag :'user[name]', nil, class:'input' %>
 
-<label class='label' for="password">Password:</label>
-<%= password_field_tag :'user[password]', nil, class:'input' %>
-<hr>
-<div align="center">
-<%= submit_tag 'Login', :class => 'button' %>
-</div>
-<% end %>
+    <label class='label' for="password">Password:</label>
+    <%= password_field_tag :'user[password]', nil, class:'input' %>
+    <hr>
+    <div align="center">
+      <%= submit_tag 'Login', :class => 'button' %>
+    </div>
+  <% end %>
 </div>
 </div>
