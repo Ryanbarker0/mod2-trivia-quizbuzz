@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   before_action :set_category, only: [:show]
 
   def show
-    # request_api?
+    # request_api
     # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
