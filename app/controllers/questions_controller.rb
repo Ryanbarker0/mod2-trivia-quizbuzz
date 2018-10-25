@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
         redirect_to '/summary'
       end
     elsif session[:hot_streak] == 'over'
+      Game.create(user_id: session[:user_id], category_id: @category.id, streak: session[:streak])  
       redirect_to '/summary'
     end
   end

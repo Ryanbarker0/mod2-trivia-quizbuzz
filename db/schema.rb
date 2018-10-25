@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_162650) do
     t.integer "user_id"
     t.integer "category_id"
     t.integer "score"
+    t.integer "streak"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
