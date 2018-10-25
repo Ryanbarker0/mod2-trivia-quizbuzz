@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get '/hot_streak', to: 'questions#hot_streak'
   # get '/hot_streak_summary', to: '/hot_streak_summary'
 
-  get '/streak', to: 'answers#streak'
+  get '/correct', to: 'answers#correct'
+  get '/incorrect', to: 'answers#incorrect'
 
   get '/feed', to: 'categories#feed'
 

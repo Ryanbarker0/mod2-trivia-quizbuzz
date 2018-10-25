@@ -23,15 +23,22 @@
 
 
 <script>
-    $('input[type="submit"]').click(function(){
-      if($(this).hasClass('correct'))
-            $(this).addClass('is-primary');
 
-      else
+    $('input[type="submit"]').click(function(){
+      if($(this).hasClass('correct')){
+            $(this).addClass('is-primary');
+            setTimeout(function(){
+            window.location.replace("<%= correct_path %>");
+         }, 500);
+
+          }
+      else{
         $(this).addClass('is-danger');
 
             setTimeout(function(){
-            window.location.replace("<%= question_path(@category.questions.find(session[:question_ids].sample)) %>");
+            window.location.replace("<%= incorrect_path %>");
          }, 500);
+       }
        });
+
 </script>

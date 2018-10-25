@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   helper_method :all_total_points
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :all_total_points]
 
 
   def index
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def all_total_points
-    Game.select{|game| game.user_id == session[:user_id]}.map{|game_by_user| game_by_user.score}.sum
+    Game.select{|game| game.user_id == @user.id}.map{|game_by_user| game_by_user.score}.sum
   end
 
   private

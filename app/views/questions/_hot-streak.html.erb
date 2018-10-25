@@ -1,3 +1,4 @@
+
 <h2 class='title' align='center'><%= @question.content %></h2>
 
 <div class="column side">
@@ -7,10 +8,37 @@
 
 <p><strong>Streak: <%= session[:streak] %></strong></p>
 <hr>
- <% @question.answers.each do |answer| %>
 
-<p><%= link_to answer.content, answer_path(answer), class: 'button' %></p>
-
+<div style="text-align: center;">
+<% @question.answers.each do |answer| %>
+  <% if answer.correct%>
+    <p><input type="submit" class="button is-medium correct" value="<%=answer.content%>" ></p>
+  <% else %>
+    <p><input type="submit" class="button is-medium" value="<%=answer.content%>"></p>
+  <% end %>
+  <br>
 <% end %>
-<hr>
+
 </div>
+
+
+<script>
+
+    $('input[type="submit"]').click(function(){
+      if($(this).hasClass('correct')){
+            $(this).addClass('is-primary');
+            setTimeout(function(){
+            window.location.replace("<%= correct_path %>");
+         }, 500);
+
+          }
+      else{
+        $(this).addClass('is-danger');
+
+            setTimeout(function(){
+            window.location.replace("<%= incorrect_path %>");
+         }, 500);
+       }
+       });
+
+</script>
