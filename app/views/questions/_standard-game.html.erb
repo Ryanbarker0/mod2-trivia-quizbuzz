@@ -8,10 +8,30 @@
 <p><strong>Question: <%= session[:question_number] %>/10</strong></p>
 <p><strong>Score: <%= session[:score] %></strong></p>
 <hr>
- <% @question.answers.each do |answer| %>
 
-<p><%= link_to answer.content, answer_path(answer), class: 'button' %></p>
-
+<div style="text-align: center;">
+<% @question.answers.each do |answer| %>
+  <% if answer.correct%>
+    <p><input type="submit" class="button is-medium correct" value="<%=answer.content%>" ></p>
+  <% else %>
+    <p><input type="submit" class="button is-medium" value="<%=answer.content%>"></p>
+  <% end %>
+  <br>
 <% end %>
-<hr>
+
 </div>
+
+
+<script>
+    $('input[type="submit"]').click(function(){
+      if($(this).hasClass('correct'))
+            $(this).addClass('is-primary');
+
+      else
+        $(this).addClass('is-danger');
+
+            setTimeout(function(){
+            window.location.replace("<%= question_path(@category.questions.find(session[:question_ids].sample)) %>");
+         }, 500);
+       });
+</script>

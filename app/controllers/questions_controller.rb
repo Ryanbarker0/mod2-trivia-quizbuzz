@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   def show
     # request_api?
     # binding.pry
+    @questions = Question.all
 
     # work with the cached data
     session[:question_ids].delete(@question.id)
