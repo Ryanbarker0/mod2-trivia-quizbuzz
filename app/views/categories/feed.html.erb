@@ -8,7 +8,7 @@
         <article class="media">
           <div class="media-left", align="center">
             <figure class="image is-64x64">
-              <img src="user.image" alt="Image">
+              <%= image_tag 'idea.png' %>
             </figure>
           </div>
           <div class="media-content">
@@ -41,4 +41,4 @@
 </div>
 
 
-<% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %> -->
+<% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>
