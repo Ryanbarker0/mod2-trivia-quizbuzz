@@ -13,15 +13,19 @@ User.create(name: "Barney", password: "12345")
 #Categories:
 Category.create(name: "General Knowledge")
 Category.create(name: "Science & Nature")
+Category.create(name: "Computers")
+Category.create(name: "Music")
+Category.create(name: "Movies")
+Category.create(name: "Video Games")
 Category.create(name: "History")
+Category.create(name: "Anime")
+Category.create(name: "Animals")
 Category.create(name: "Geography")
 Category.create(name: "Politics")
-Category.create(name: "Medicine")
+Category.create(name: "Books")
 Category.create(name: "Sports")
-Category.create(name: "TV")
-Category.create(name: "Movies")
-Category.create(name: "Games")
-
+Category.create(name: "Vehicles")
+Category.create(name: "Celebrities")
 
 #---------------------------------------------#
 #-------------Questions & Answers-------------#

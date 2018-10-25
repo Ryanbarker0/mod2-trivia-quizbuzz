@@ -1,19 +1,16 @@
 <h3 class="title" align='center'>All Categories</h3>
-<div class="column side">
 
-</div>
 
 <div class="column middle">
+  <hr>
   <div class="categories">
 
 <% @categories.each do |cat| %>
 
-<ul>
-  <li><%= link_to cat.name, category_url(cat) %></li>
-</ul>
+<%= link_to cat.name, category_url(cat), class: "button category" %></li>
+
 <% end %>
+
   </div>
 <hr>
-<p align="center"><%= link_to "Logout", logout_path, method: 'delete', class: 'button' %></p>
-  <br>
-<p align="center"><%= link_to "Feed", feed_path, method: 'get', class: 'button' %></p>
+<p align='center'><%= link_to "Return to Feed", feed_path, class: 'button is-info' %></p>

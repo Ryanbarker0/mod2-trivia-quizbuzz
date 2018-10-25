@@ -1,38 +1,44 @@
-<h3 class='title' align='center'><%= @category.name %></h1>
-<div class="column side"></div>
+<!-- <nav class='level'> -->
+<div class='tile is-parent'>
+  <div class="section">
+    <h3 class='title' align='center'><%= @category.name %></h1>
 
-<div class='column middle'>
-  <hr>
-  <h2 align='center'>
-    <%= link_to "Click here to start quiz!", @category.questions.find(@random_question), class: 'button' %>
-    <hr>
-    <%= link_to "Click here to start hot streak!", hot_streak_path, class: 'button' %>
-    <hr>
-    <%= link_to "Return to All Categories", categories_path, class: 'button' %>
-  </div>
+    <div class='column middle'>
+      <hr>
+      <h2 align='center'>
+        <%= link_to "Click here to start quiz!", @category.questions.find(@random_question), class: 'button' %>
+        <hr>
+        <%= link_to "Click here to start hot streak!", hot_streak_path, class: 'button' %>
+        <hr>
+        <%= link_to "Return to All Categories", categories_path, class: 'button' %>
 
-<div class="column side">
-
-  <h4 class='title' align='center'>Top Scorers</h4>
-
-    <table class="table is-striped is-hoverable" align='center'>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Player</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <% @position = 0 %>
-        <% category_leaderboard.each do |game| %>
-
-          <tbody>
-            <tr>
-              <th><%= @position += 1 %></th>
-              <td><%= game.user.name %></td>
-              <td><%= game.score %></td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+</div>
     </div>
+
+<div class="tile is-parent">
+  <div class="section">
+
+        <h4 class='title' align='center'>Top Scorers</h4>
+
+        <table class="table is-striped is-hoverable" align='center'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Player</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <% @position = 0 %>
+            <% category_leaderboard.each do |game| %>
+
+              <tbody>
+                <tr>
+                  <th><%= @position += 1 %></th>
+                  <td><%= game.user.name %></td>
+                  <td><%= game.score %></td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+  </div>
+      </div>

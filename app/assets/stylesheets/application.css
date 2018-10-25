@@ -17,20 +17,49 @@
  /* @import 'bulma'; */
  @import 'bulma/css/bulma.css';
 
- .column {
+ /* .column {
      float: left;
      padding: 10px;
+ } */
+
+ .feed {
+   float: right;
+   padding: 10px;
+   margin-right: 5rem;
+   width: 40%;
  }
 
+ .title:not(:last-child) {
+   margin-bottom: 0rem;
+ }
+
+ .column {
+   margin-right: 20%;
+   margin-left: 20%;
+ }
+
+.categories > a.button {
+    width: 10rem;
+}
+
+.button.category {
+  margin: 0.5rem;
+}
+
+ /* .column.feed_page {
+   width: 25%
+ } */
+
  /* Left and right column */
- .column.side {
+ /* .column.side {
      width: 25%;
  }
 
  /* Middle column */
- .column.middle {
+ /* .column.middle {
      width: 50%;
- }
+ } */
+
 
  /* Clear floats after the columns */
  .row:after {
@@ -44,16 +73,13 @@
     flex-flow: wrap;
 }
 
-.content.is-content {
-  height: 30rem;
-}
 
  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
- @media screen and (max-width: 600px) {
+ /* @media screen and (max-width: 600px) {
      .column.side, .column.middle {
          width: 100%;
      }
- }
+ } */
 
  table td, table th {
     text-align: center;

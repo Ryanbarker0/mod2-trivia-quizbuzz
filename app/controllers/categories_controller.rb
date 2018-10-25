@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    # category_number_assignment
+
     session[:category] = @category
     session[:question_number] = 0
     session[:question_ids] = Array.new
@@ -49,18 +49,56 @@ class CategoriesController < ApplicationController
   end
 
   def category_number_assignment
+    @@difficulty = "easy"
+    @@amount = 25
     case @category.name
     when "Science & Nature"
       @@category_api_number = 17
+      @@difficulty = "medium"
     when "General Knowledge"
       @@category_api_number = 9
+    when "Computers"
+      @@category_api_number = 18
+    when "Music"
+      @@category_api_number = 12
+    when "Movies"
+      @@category_api_number = 11
+    when "Video Games"
+      @@category_api_number = 15
+    when "History"
+      @@category_api_number = 23
+    when "Anime"
+      @@category_api_number = 31
+    when "Animals"
+      @@category_api_number = 27
+      @@amount = 11
+      @@difficulty = "medium"
+    when "Geography"
+      @@category_api_number = 22
+    when "Politics"
+      @@category_api_number = 24
+      @@amount = 15
+      @@difficulty = "medium"
+    when "Books"
+      @@category_api_number = 10
+      @@difficulty = "medium"
+    when "Sports"
+      @@category_api_number = 21
+      @@amount = 20
+    when "Vehicles"
+      @@category_api_number = 28
+      @@amount = 20
+      @@difficulty = "medium"
+    when "Celebrities"
+      @@category_api_number = 26
+      @@amount = 20
+      @@difficulty = "medium"
     end
   end
 
   def request_api?
-    # if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
     if !@category.questions.any?
-      api_request(@@category_api_number)
+      api_request(@@category_api_number, @@difficulty, @@amount)
     end
   end
 end
