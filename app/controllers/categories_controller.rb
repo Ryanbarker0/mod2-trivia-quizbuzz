@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   before_action :set_category, only: [:show]
   before_action :require_login
+  before_action :category_number_assignment, :request_api?, only: [:show]
   helper_method :category_leaderboard
 
   def index
@@ -29,12 +30,7 @@ class CategoriesController < ApplicationController
     Game.select{|game| game.category_id == @category.id}.sort_by{|game| game.score}.reverse.take(10)
   end
 
-  def category_number_assignment
-    case @category.name
-    when "Science & Nature"
-      $category_api_number = 17
-    end
-  end
+
 
   def feed
   end
@@ -49,6 +45,22 @@ class CategoriesController < ApplicationController
     unless session.include? :user_id
       # head(:forbidden)
       redirect_to '/'
+    end
+  end
+
+  def category_number_assignment
+    case @category.name
+    when "Science & Nature"
+      @@category_api_number = 17
+    when "General Knowledge"
+      @@category_api_number = 9
+    end
+  end
+
+  def request_api?
+    # if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
+    if !@category.questions.any?
+      api_request(@@category_api_number)
     end
   end
 end
