@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Bulma CSS Framework
 gem "bulma-rails", "~> 0.7.2"
 gem 'pry'
+#Use jquery in rails
+gem 'jquery-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -64,9 +66,9 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production do
-  gem 'pg', '~> 0.18'
-end
+# group :production do
+#   gem 'pg', '~> 0.18'
+# end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
