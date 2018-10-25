@@ -1,5 +1,29 @@
 {
   "name": "quizbuzz",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma": "^0.7.2",
+    "modernizr": "3.6.0"
+  },
+  "description": "# API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryanbarker0/mod2-trivia-quizbuzz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryanbarker0/mod2-trivia-quizbuzz/issues"
+  },
+  "homepage": "https://github.com/Ryanbarker0/mod2-trivia-quizbuzz#readme"
 }
