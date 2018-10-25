@@ -5,9 +5,7 @@ class QuestionsController < ApplicationController
   before_action :set_category, only: [:show]
 
   def show
-    request_api?
-    binding.pry
-
+    # request_api?
     # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
@@ -57,12 +55,6 @@ class QuestionsController < ApplicationController
       responses[:bad_score].shuffle[0]
     when (0)
       responses[:zero_score].shuffle[0]
-    end
-  end
-
-  def request_api?
-    if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
-      api_request($category_api_number)
     end
   end
 
