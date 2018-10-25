@@ -5,6 +5,8 @@ class QuestionsController < ApplicationController
 
   def show
     request_api?
+    binding.pry
+
     # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
@@ -20,9 +22,13 @@ class QuestionsController < ApplicationController
   end
 
   def request_api?
-    if !!!$redis.get("#{@category.id}")
+    if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
       api_request($category_api_number)
     end
+  end
+
+  def find_question_data
+    $redis.hgetall
   end
 
 
