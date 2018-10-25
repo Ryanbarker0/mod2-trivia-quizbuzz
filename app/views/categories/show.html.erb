@@ -1,11 +1,27 @@
 <!-- <nav class='level'> -->
-<div class='tile is-parent'>
+<div class="container">
+  <div class="level">
+    <div class="level-left">
+      <div class="section">
+<h1 class='title' align="center">TEXT</h1>
+      </div>
+
+    </div>
+    <div class="level-right">
+<h1 class='title' align="center">TEXT</h1>
+    </div>
+  </div>
+
+</div>
+<div class="level">
+<div class='level-left'>
+
   <div class="section">
-    <h3 class='title' align='center'><%= @category.name %></h1>
+    <!-- <h3 class='title' align='center'><%= @category.name %></h3> -->
 
     <div class='column middle'>
       <hr>
-      <h2 align='center'>
+
         <%= link_to "Click here to start quiz!", @category.questions.find(@random_question), class: 'button' %>
         <hr>
         <%= link_to "Click here to start hot streak!", hot_streak_path, class: 'button' %>
@@ -14,8 +30,8 @@
 
 </div>
     </div>
-
-<div class="tile is-parent">
+</div>
+<div class='level-right'>
   <div class="section">
 
         <h4 class='title' align='center'>Top Scorers</h4>
@@ -40,5 +56,7 @@
               </tbody>
             <% end %>
           </table>
+        </div>
   </div>
       </div>
+    </div>
