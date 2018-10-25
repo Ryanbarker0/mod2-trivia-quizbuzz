@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
     response_string = RestClient.get(url)
     response = JSON.parse(response_string)
     category_questions_answers = []
+    i = 0
     response["results"].each do |question|
-      category_questions_answers << {category: question["category"], question: question["question"], correct_answer: question["correct_answer"], incorrect_answers: question["incorrect_answers"]}
+      i += 1
+      category_questions_answers << {i: {category: question["category"], question: question["question"], correct_answer: question["correct_answer"], incorrect_answers: question["incorrect_answers"]}}
     end
     $redis.set("#{@category.id}", category_questions_answers)
 
