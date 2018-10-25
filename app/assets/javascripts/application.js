@@ -14,3 +14,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//
+// $("#heart").click(function() {
+//   $(this).toggleClass('far fa-heart');
+//   $(this).toggleClass('fas fa-heart');
+// });
+
+
+$("#heart").click(function() {
+  $(this).toggleClass('fa-heart-o');
+  $(this).toggleClass('fa-heart');
+});

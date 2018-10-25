@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  helper_method :all_total_points
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -42,6 +43,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def all_total_points
+    Game.select{|game| game.user_id == session[:user_id]}.map{|game_by_user| game_by_user.score}.sum
   end
 
   private

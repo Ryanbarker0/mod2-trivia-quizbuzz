@@ -60,3 +60,27 @@
 .menu-list {
     width: 60%;
 }
+
+.like_game {
+  color: #cc0000
+}
+
+.comment_on_game {
+  color: #336699
+}
+
+.bad-game {
+  color: #ff0000
+}
+
+.decent-game {
+  color: #ffcc66
+}
+
+.good-game {
+  color: #00cc00
+}
+
+.points {
+  color: #00cc00
+}

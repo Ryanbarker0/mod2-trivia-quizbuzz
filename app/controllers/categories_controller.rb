@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    category_number_assignment
+    # category_number_assignment
     session[:category] = @category
     session[:question_number] = 0
     session[:question_ids] = Array.new
@@ -19,6 +19,8 @@ class CategoriesController < ApplicationController
 
     @random_question = session[:question_ids].sample
     session[:score] = 0
+    session[:streak] = 0
+    session[:hot_streak] = false
   end
 
   def category_leaderboard
@@ -32,6 +34,9 @@ class CategoriesController < ApplicationController
     when "Science & Nature"
       $category_api_number = 17
     end
+  end
+
+  def feed
   end
 
   private

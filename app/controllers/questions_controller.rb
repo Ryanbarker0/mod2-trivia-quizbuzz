@@ -1,20 +1,24 @@
 class QuestionsController < ApplicationController
-  helper_method :score_response, :highest_score_for_user_in_category, :high_score?
+  helper_method :score_response, :highest_score_for_user_in_category
 
   before_action :set_question, only: [:show]
   before_action :set_category, only: [:show]
 
   def show
-    request_api?
-    binding.pry
+    # request_api?
+    # binding.pry
 
     # work with the cached data
     session[:question_ids].delete(@question.id)
     session[:question_number] += 1
-    if session[:question_number] > 10
-      session.delete([:question_number])
-      session.delete([:question_ids])
-      Game.create(user_id: session[:user_id], category_id: @category.id, score: session[:score])
+    if session[:hot_streak] == false
+      if session[:question_number] > 10
+        session.delete([:question_number])
+        session.delete([:question_ids])
+        Game.create(user_id: session[:user_id], category_id: @category.id, score: session[:score])
+        redirect_to '/summary'
+      end
+    elsif session[:hot_streak] == 'over'
       redirect_to '/summary'
     end
   end
@@ -23,15 +27,15 @@ class QuestionsController < ApplicationController
   end
 
 
-  #----------helper_methods--------#
 
-  def high_score? (score)
-    if score >= highest_score_for_user_in_category
-      "Personal high score - nice!"
-    else
-      score_response
-    end
+  def hot_streak
+    session[:hot_streak] = true
+    @question = Question.select{|question| question.category_id == session[:category]["id"]}[session[:question_ids].sample - 1]
+    redirect_to question_path(@question)
   end
+
+
+  #----------helper_methods--------#
 
   def highest_score_for_user_in_category
     User.find(session[:user_id]).games.select{|game| game.category_id == session[:category]["id"]}.max_by{|category_game| category_game.score}.score
@@ -60,15 +64,15 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def request_api?
-    if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
-      api_request($category_api_number)
-    end
-  end
-
-  def find_question_data
-    $redis.hgetall
-  end
+  # def request_api?
+  #   if !!!$redis.hgetall(@category.name).key?("#{@category.id}")
+  #     api_request($category_api_number)
+  #   end
+  # end
+  #
+  # def find_question_data
+  #   $redis.hgetall
+  # end
 
 
   private
