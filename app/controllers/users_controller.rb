@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  helper_method :all_total_points
+  helper_method :all_total_points, :highest_streak
 
   before_action :set_user, only: [:show, :edit, :update, :destroy, :all_total_points]
 
@@ -46,7 +46,12 @@ class UsersController < ApplicationController
   end
 
   def all_total_points
-    Game.select{|game| game.user_id == @user.id}.map{|game_by_user| game_by_user.score}.sum
+    #finding all games by user, sorting all game scores by user into array and summing this array
+    Game.select{|game| game.user_id == @user.id}.select{|game| !!game.score}.map{|game| game.score}.sum
+  end
+
+  def highest_streak
+    Game.select{|game| game.user_id == @user.id}.select{|game| !!game.streak}.max_by{|game| game.streak}.streak
   end
 
   private
