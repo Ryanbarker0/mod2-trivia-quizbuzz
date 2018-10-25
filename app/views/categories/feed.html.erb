@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<script type="text/javascript" src="application.js"></script>
+</head>
+<body>
+
+
+  <% Game.order("created_at").reverse.take(10).each do |game| %>
+      <hr>
+      <div class="box">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <article class="media">
+          <div class="media-left", align="center">
+            <figure class="image is-64x64">
+              <img src="user.image" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= game.user.name %></strong> <small><%= game.created_at.strftime('%d %b %Y %H:%M') %></small>
+                <br>
+                Scored
+                <% case game.score %>
+                <% when (0..400) %>
+                  <span class="bad-game">
+                    <%= game.score %>
+                  </span>
+                <% when (500..700) %>
+                  <span class="decent-game">
+                    <%= game.score %>
+                  </span>
+                <% when (800..1000) %>
+                  <span class="good-game">
+                    <%= game.score %>
+                  </span>
+                <% end %>
+                points in <%= game.category.name %>!
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+  <% end %>
+
+
+
+</body>
+</html>
+
+<% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>
