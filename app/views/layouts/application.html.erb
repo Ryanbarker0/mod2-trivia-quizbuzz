@@ -12,15 +12,11 @@
 
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-<<<<<<< HEAD
-        <a class="navbar-item" href="<%= feed_path %>">
-=======
         <% if current_user  %>
         <a class="navbar-item" href="<%= root_path %>">
           <% else %>
           <a class="navbar-item" href="<%= feed_path %>">
             <% end %>
->>>>>>> 2e6e4f33dcfc29d2d8976c0002e2dc560ed8c352
           <%= image_tag('quizbuzz-nav-logo.png', width: '112') %>
           <!-- <img src="quizbuzz-nav-logo.png" width="112" height="28"> -->
         </a>

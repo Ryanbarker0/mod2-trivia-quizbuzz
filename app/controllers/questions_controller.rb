@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
         redirect_to '/summary'
       end
     elsif session[:hot_streak] == 'over'
-      Game.create(user_id: session[:user_id], category_id: @category.id, streak: session[:streak])  
+      Game.create(user_id: session[:user_id], category_id: @category.id, streak: session[:streak])
       redirect_to '/summary'
     end
   end
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   #----------helper_methods--------#
 
   def highest_score_for_user_in_category
-    User.find(session[:user_id]).games.select{|game| game.category_id == session[:category]["id"]}.max_by{|category_game| category_game.score}.score
+    User.find(session[:user_id]).games.select{|game| game.category_id == session[:category]["id"] && !!game.score}.max_by{|category_game| category_game.score}.score
   end
 
   def score_response
