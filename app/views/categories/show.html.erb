@@ -28,17 +28,17 @@
             <tr>
               <th></th>
               <th>Player</th>
-              <th>Score</th>
+              <th>Streak</th>
             </tr>
           </thead>
           <% @position = 0 %>
-            <% category_leaderboard.each do |game| %>
+            <% category_streak_leaderboard.each do |game| %>
 
               <tbody>
                 <tr>
                   <th><%= @position += 1 %></th>
                   <td><%= game.user.name %></td>
-                  <td><%= game.score %></td>
+                  <td><%= game.streak %></td>
                 </tr>
               </tbody>
             <% end %>

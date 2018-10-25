@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :category_id
       t.integer :score
+      t.integer :streak
 
       t.timestamps
     end
