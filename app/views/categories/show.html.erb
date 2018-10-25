@@ -6,6 +6,8 @@
   <h2 align='center'>
     <%= link_to "Click here to start quiz!", @category.questions.find(@random_question), class: 'button' %>
     <hr>
+    <%= link_to "Click here to start hot streak!", hot_streak_path, class: 'button' %>
+    <hr>
     <%= link_to "Return to All Categories", categories_path, class: 'button' %>
   </div>
 

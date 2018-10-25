@@ -15,5 +15,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/summary', to: 'questions#summary'
+  get '/hot_streak', to: 'questions#hot_streak'
+  # get '/hot_streak_summary', to: '/hot_streak_summary'
+
+  get '/streak', to: 'answers#streak'
+
+  get '/feed', to: 'categories#feed'
 
 end

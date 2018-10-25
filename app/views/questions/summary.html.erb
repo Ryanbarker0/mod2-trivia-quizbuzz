@@ -1,36 +1,5 @@
-<h1 class="title">Summary</h1>
-<div class="column side"></div>
-<div class="column middle">
-  <h3 class="title" align='center'>Congratulations, You Completed a Quiz!</h3>
-    <hr>
-  <h4 class="subtitle" align='center'>
-    You scored
-    <strong>
-      <%= session[:score] %> points
-    </strong>
-  </h4>
-  <br>
-
-
-  <p align='center'>
-
-  <%= high_score? (session[:score]) %>
-
-  </p>
-
-  <% session.delete([:score]) %>
-    <% session[:score] = 0 %>
-      <% @category = Category.find(session[:category]["id"]) %>
-        <% session[:question_number] = 0 %>
-          <% session[:question_ids] = Array.new %>
-
-            <% @category.questions.each do |question| %>
-              <%  session[:question_ids] << question.id %><% end %>
-              <% @random_question = session[:question_ids].sample %>
-                <hr>
-
-                <p align='center'><%= link_to "Play again!", @category.questions.find(@random_question), class: 'button'%></p>
-                <br>
-                <p align='center'><%= link_to "All Categories", categories_path, class: 'button' %></p>
-                <hr>
-              </div>
+<% if session[:hot_streak] == 'over' %>
+  <%= render 'hot-streak-summary' %>
+<% elsif session[:hot_streak] == false %>
+  <%= render 'standard-game-summary' %>
+<% end %>
