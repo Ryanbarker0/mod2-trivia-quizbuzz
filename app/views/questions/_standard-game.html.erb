@@ -10,7 +10,7 @@
 <hr>
 
 <div style="text-align: center;">
-<% @question.answers.each do |answer| %>
+<% @question.answers.shuffle.each do |answer| %>
   <% if answer.correct%>
     <p><input type="submit" class="button is-medium correct" value="<%=answer.content%>" ></p>
   <% else %>
