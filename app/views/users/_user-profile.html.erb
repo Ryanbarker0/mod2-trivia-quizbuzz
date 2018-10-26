@@ -21,7 +21,7 @@
         <a href="<%= edit_user_url %>">Update Password</a>
       </li>
       <li>
-        <%= link_to 'Delete Account', user_path(@user), method: 'destroy' %>
+          <%= link_to 'Delete Account', user_url(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
       </li>
       <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
     </ul>

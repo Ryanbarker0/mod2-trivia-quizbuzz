@@ -44,7 +44,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.games.each{|g| g.delete}
     @user.delete
+    session.destroy
     redirect_to root_path
   end
 
