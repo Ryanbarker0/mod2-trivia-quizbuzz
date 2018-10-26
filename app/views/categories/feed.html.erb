@@ -1,6 +1,6 @@
 <!-- <div class='feed'> -->
 
-<p><%= link_to "Play Now", categories_path, class: 'button is-large is-fullwidth is-success' %></p>
+<!-- <p><%= link_to "Play Now", categories_path, class: 'button is-large is-fullwidth is-success' %></p> -->
 
 <div class="level">
   <div class="section"></div>
@@ -8,6 +8,8 @@
   <div class="level-right">
     <div class="section">
       <h2 class="title" align='center'>Feed</h2>
+      <div class="section scroll">
+
       <% Game.order("created_at").reverse.take(10).each do |game| %>
         <hr>
         <div class="box">
