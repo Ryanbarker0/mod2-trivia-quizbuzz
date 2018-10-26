@@ -10,17 +10,11 @@
     <p class='points'><%= all_total_points %></p>
 
   <hr>
-  <p class='menu-label'>Achievements</p>
-    <p class='achievements'>
-      <% if all_total_points > 2000 %>
-      <%= '"Not bad.. for a rookie."' %>
-      <% elsif all_total_points > 5000 %>
-      <%= '"Hmmmm.. you\'re getting good at this."' %>
-      <% elsif all_total_points > 10000 %>
-      <%= '"You need to stop playing this shite."' %>
-      <% end %>
-    </p>
 
+  <p class='menu-label'>Highest Streak</p>
+    <p class='points'><%= highest_streak %></p>
+
+  <hr>
 
   <hr>
   <aside class='menu'>

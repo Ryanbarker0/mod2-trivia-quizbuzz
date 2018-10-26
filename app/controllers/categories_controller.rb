@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show]
   before_action :require_login
   before_action :category_number_assignment, :request_api?, only: [:show]
-  helper_method :category_leaderboard
+  helper_method :category_score_leaderboard, :category_streak_leaderboard
 
   def index
     @categories = Category.all
@@ -24,12 +24,16 @@ class CategoriesController < ApplicationController
     session[:hot_streak] = false
   end
 
-  def category_leaderboard
+  def category_score_leaderboard
     #selects all the instances of the Game class that have the same category id as the category you are currently viewing/in
     #then sorts this array of game objects by their score in desceding order and takes only the first 10
-    Game.select{|game| game.category_id == @category.id}.sort_by{|game| game.score}.reverse.take(10)
+    Game.select{|game| game.category_id == @category.id && !!game.score}.sort_by{|game| game.score}.reverse.take(10)
   end
 
+  def category_streak_leaderboard
+    #same as above but for streaks
+    Game.select{|game| game.category_id == @category.id && !!game.streak}.sort_by{|game| game.streak}.reverse.take(10)
+  end
 
 
   def feed

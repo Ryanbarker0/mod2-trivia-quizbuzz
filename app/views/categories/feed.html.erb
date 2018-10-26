@@ -26,6 +26,7 @@
                   <strong><%= link_to game.user.name, game.user %></strong>
                   <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
                   <br>
+                  <% if !!game.score %>
                   Scored
                   <% case game.score %>
                     <% when (0..400) %>
@@ -43,6 +44,14 @@
                         <% end %>
                         points in
                         <%= game.category.name %>!
+                    <% elsif !!game.streak %>
+                    Went on a
+                    <span class="streak">
+                      <%= game.streak %>
+                    </span>
+                    question streak in
+                      <%= game.category.name %>!
+                    <% end %>
                       </p>
                     </div>
                   </div>

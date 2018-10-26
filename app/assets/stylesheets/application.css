@@ -118,17 +118,18 @@
   color: #00cc00
 }
 
-.red
-{
+.red {
     color:red;
 }
 
-.green
-{
+.green {
   color:green
 }
 
-.correct
-{
+.correct {
 
+}
+
+.streak {
+  color:orange
 }

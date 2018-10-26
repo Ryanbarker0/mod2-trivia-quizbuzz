@@ -35,6 +35,6 @@
 
                 <p align='center'><%= link_to "Play again!", @category.questions.find(@random_question), class: 'button'%></p>
                 <br>
-                <p align='center'><%= link_to "All Categories", categories_path, class: 'button' %></p>
+                <p align='center'><%= link_to "Go back to #{@category.name}", category_path(@category), class: 'button' %></p>
                 <hr>
               </div>
