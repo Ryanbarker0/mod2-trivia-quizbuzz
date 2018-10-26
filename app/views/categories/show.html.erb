@@ -3,7 +3,7 @@
 <hr>
 
 <div class="level">
-  <div class='level-left'>
+  <div class='level-left cat'>
 
     <div class="section">
       <div class='column'>
@@ -18,27 +18,28 @@
     </div>
   </div>
 
-  <div class='level-right'>
+  <div class='level-right cat'>
     <div class="section">
 
       <h4 class='title' align='center'>Top Scorers</h4>
 
-        <table class="table is-striped is-hoverable" align='center'>
+
+        <table class="table is-striped is-hoverable is-fullwidth" align='center'>
           <thead>
             <tr>
               <th></th>
               <th>Player</th>
-              <th>Streak</th>
+              <th>Score</th>
             </tr>
           </thead>
           <% @position = 0 %>
-            <% category_streak_leaderboard.each do |game| %>
+            <% category_score_leaderboard.each do |game| %>
 
               <tbody>
                 <tr>
                   <th><%= @position += 1 %></th>
                   <td><%= game.user.name %></td>
-                  <td><%= game.streak %></td>
+                  <td><%= game.score %></td>
                 </tr>
               </tbody>
             <% end %>
@@ -46,4 +47,5 @@
         </div>
       </div>
     </div>
+  </div>
   </div>

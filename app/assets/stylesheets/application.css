@@ -22,12 +22,12 @@
      padding: 10px;
  } */
 
- .feed {
+ /* .feed {
    float: right;
    padding: 10px;
    margin-right: 5rem;
    width: 40%;
- }
+ } */
 
  .title:not(:last-child) {
    margin-bottom: 0rem;
@@ -44,6 +44,14 @@
 
 .button.category {
   margin: 0.5rem;
+}
+
+.level-left.feed {
+  padding-left: 6rem;
+}
+
+.level-right.feed {
+  padding-right: 6rem;
 }
 
  /* .column.feed_page {
@@ -76,6 +84,22 @@
     overflow: scroll;
     height: 47rem;
     padding-top: 0rem;
+}
+
+.section.streak {
+    /* overflow: scroll; */
+    height: 47rem;
+    padding-top: 0.18rem;
+}
+
+.level-left.cat {
+  padding-left: 10rem;
+
+
+}
+
+.level-right.cat {
+  padding-right: 15rem;
 }
 
 

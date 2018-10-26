@@ -1,37 +1,35 @@
 <!-- <div class='feed'> -->
 
-<!-- <p><%= link_to "Play Now", categories_path, class: 'button is-large is-fullwidth is-success' %></p> -->
-
-
-
-
-
-<div class='level-left'>
+<p align='center'><%= link_to "Play Now", categories_path, class: 'button is-large is-success' %></p>
+<div class="level">
+<div class='level-left feed'>
   <div class="section">
 
-    <h4 class='title' align='center'>Top Scorers</h4>
+    <h4 class='title' align='center'>Highest Streaks Today</h4>
 
-      <table class="table is-striped is-hoverable" align='center'>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Player</th>
-            <th>Streak</th>
-          </tr>
-        </thead>
-        <% @position = 0 %>
-          <% top_5_streaks_of_the_day.each do |game| %>
+<div class="section streak">
+    <hr>
 
-            <tbody>
-              <tr>
-                <th><%= @position += 1 %></th>
-                <td><%= game.user.name %></td>
-                <td><%= game.streak %></td>
-              </tr>
-            </tbody>
-          <% end %>
-        </table>
-      </div>
+    <table class="table is-striped is-hoverable is-fullwidth" align='center'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Player</th>
+          <th>Streak</th>
+        </tr>
+      </thead>
+      <% @position = 0 %>
+        <% top_5_streaks_of_the_day.each do |game| %>
+
+          <tbody>
+            <tr>
+              <th><%= @position += 1 %></th>
+              <td><%= game.user.name %></td>
+              <td><%= game.streak %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
@@ -39,69 +37,106 @@
 
 
 
-<div class="level">
-  <div class="section"></div>
+<div class="level-right feed">
+  <div class="section">
+    <h2 class="title" align='center'>Feed</h2>
+    <div class="section scroll" id='feed'>
 
-  <div class="level-right">
-    <div class="section">
-      <h2 class="title" align='center'>Feed</h2>
-      <div class="section scroll">
+      <% Game.order("created_at").reverse.take(10).each do |game| %>
+        <hr>
+        <div class="box">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <article class="media">
+            <img src="brain.png" id="loading" alt="loading" style="display:none;" />
+            <div class="media-left" ,="," align="center">
+              <figure class="image is-64x64">
+                <% if !!game.score %>
+                <% case game.score %>
+                  <% when (0..400) %>
+                    <%= image_tag 'thinking.png' %>
+                    <% when (500..700) %>
+                      <%= image_tag 'brain.png' %>
+                      <% when (800..1000) %>
+                        <%= image_tag 'idea.png' %>
+                      <% end %>
+                      <% elsif !!game.streak %>
+                      <%= image_tag 'cup.png' %>
+                      <% end %>
 
-        <% Game.order("created_at").reverse.take(10).each do |game| %>
-          <hr>
-          <div class="box">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <article class="media">
-              <div class="media-left" ,="," align="center">
-                <figure class="image is-64x64">
-                  <% case game.score %>
-                    <% when (0..400) %>
-                      <%= image_tag 'thinking.png' %>
-                      <% when (500..700) %>
-                        <%= image_tag 'brain.png' %>
-                        <% when (800..1000) %>
-                          <%= image_tag 'idea.png' %>
-                        <% end %>
-                      </figure>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <strong><%= link_to game.user.name, game.user %></strong>
-                          <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
-                          <br>
-                          <% if !!game.score %>
-                            Scored
-                            <% case game.score %>
-                              <% when (0..400) %>
-                                <span class="bad-game">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong><%= link_to game.user.name, game.user %></strong>
+                        <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
+                        <br>
+                        <% if !!game.score %>
+                          Scored
+                          <% case game.score %>
+                            <% when (0..400) %>
+                              <span class="bad-game">
+                                <%= game.score %>
+                              </span>
+                              <% when (500..700) %>
+                                <span class="decent-game">
                                   <%= game.score %>
                                 </span>
-                                <% when (500..700) %>
-                                  <span class="decent-game">
+                                <% when (800..1000) %>
+                                  <span class="good-game">
                                     <%= game.score %>
                                   </span>
-                                  <% when (800..1000) %>
-                                    <span class="good-game">
-                                      <%= game.score %>
-                                    </span>
-                                  <% end %>
-                                  points in
+                                <% end %>
+                                points in
+                                <%= game.category.name %>!
+                                <% elsif !!game.streak %>
+                                  Went on a
+                                  <span class="streak">
+                                    <%= game.streak %>
+                                  </span>
+                                  question streak in
                                   <%= game.category.name %>!
-                                  <% elsif !!game.streak %>
-                                    Went on a
-                                    <span class="streak">
-                                      <%= game.streak %>
-                                    </span>
-                                    question streak in
-                                    <%= game.category.name %>!
-                                  <% end %>
-                                </p>
-                              </div>
+                                <% end %>
+                              </p>
                             </div>
-                          </article>
-                        </div>
-                      <% end %>
-                    </div>
+                          </div>
+                        </article>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
+              </div>
+            </div>
+
+              <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+              <!-- <script>
+              (function($)
+              {
+                  $(document).ready(function()
+                  {
+                      $.ajaxSetup(
+                      {
+                          cache: false,
+                          beforeSend: function() {
+                              $('#feed').hide();
+                              $('#loading').show()
+
+                          },
+                          complete: function() {
+                              $('#loading').hide();
+                              $('#feed').show();
+                          },
+                          success: function() {
+                              $('#loading').hide();
+                              $('#feed').show();
+                          }
+                      });
+                      var $container = $("#feed");
+                      $container.load("/feed.html.erb");
+                      var refreshId = setInterval(function()
+                      {
+                          $container.load('/feed.html.erb');
+                      }, 9000);
+                  });
+              })(jQuery);
+</script> -->
