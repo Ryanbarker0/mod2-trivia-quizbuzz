@@ -1,0 +1,18 @@
+
+<h3 class="title" align='center'>Friends</h3>
+
+
+<div class="column middle" align='center'>
+  <hr>
+  <div class="friends">
+
+<% User.find(session[:user_id]).friends.each do |friend| %>
+  <% @friend = (User.find(friend.friend_id)) %>
+
+<%= link_to @friend.name, user_path(@friend), class: "button category" %></li>
+
+<% end %>
+
+  </div>
+<hr>
+<p align='center'><%= link_to "Return to Feed", feed_path, class: 'button is-info' %></p>

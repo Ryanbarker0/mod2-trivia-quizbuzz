@@ -21,9 +21,10 @@
         <a href="<%= edit_user_url %>">Update Password</a>
       </li>
       <li>
-        <%= link_to 'Delete Account', user_path(@user), method: 'destroy' %>
+        <a>Delete Account</a>
       </li>
       <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
+      <li><%= link_to "All Friends", users_path%></li>
     </ul>
 
   </aside>

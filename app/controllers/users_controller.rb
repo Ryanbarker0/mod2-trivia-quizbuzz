@@ -27,6 +27,22 @@ class UsersController < ApplicationController
   def show
   end
 
+  def friends
+    # binding.pry
+    @user = User.find(session[:users_profile]["id"])
+    Friend.create(user_id: session[:user_id], friend_id: @user.id)
+    # binding.pry
+    redirect_to user_path(@user)
+  end
+
+  def unfriends
+    # binding.pry
+    @user = User.find(session[:users_profile]["id"])
+    User.find(session[:user_id]).friends.find_by(friend_id: @user.id).delete
+    # binding.pry
+    redirect_to user_path(@user)
+  end
+
   def edit
   end
 

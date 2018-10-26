@@ -1,3 +1,6 @@
+<% session[:users_profile] = @user %>
+
+
 <h1 class='title' align='center'><%= @user.name %>'s Profile</h1>
 <hr>
 
@@ -15,10 +18,22 @@
     <p class='points'><%= highest_streak %></p>
 
   <hr>
+  <% #binding.pry %>
+
+  <% if !!User.find(session[:user_id]).friends.find_by(friend_id: @user.id) %>
+    <p><%= link_to "Unfriend", unfriends_path, class: 'button is-info is-outlined' %></p>
+  <% else %>
+    <p> <%= link_to "Add Friend", friends_path, class: 'button is-info'%></p>
+  <% end %>
+
+  <hr>
+
+    <p><%= link_to "All Friends", users_path, class: 'menu-label'%></p>
+
+  <hr>
 
 </div>
 
-</div>
 
 <div class="column middle">
 
