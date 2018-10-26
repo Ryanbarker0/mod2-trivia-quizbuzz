@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   helper_method :all_total_points, :highest_streak
 
   before_action :set_user, only: [:show, :edit, :update, :destroy, :all_total_points]
+  before_action :set_user_games, only: [:all_total_points, :highest_streak]
 
 
   def index
@@ -47,11 +48,19 @@ class UsersController < ApplicationController
 
   def all_total_points
     #finding all games by user, sorting all game scores by user into array and summing this array
-    Game.select{|game| game.user_id == @user.id}.select{|game| !!game.score}.map{|game| game.score}.sum
+    if @user_games.select{|game| !!game.score}
+      @user_games.select{|game| !!game.score}.map{|game| game.score}.sum
+    else
+      0
+    end
   end
 
   def highest_streak
-    Game.select{|game| game.user_id == @user.id}.select{|game| !!game.streak}.max_by{|game| game.streak}.streak
+    if @user_games.select{|game| !!game.streak}.any?
+      @user_games.select{|game| !!game.streak}.max_by{|game| game.streak}.streak
+    else
+      0
+    end
   end
 
   private
@@ -66,6 +75,10 @@ class UsersController < ApplicationController
 
   def user_update_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def set_user_games
+    @user_games = Game.select{|game| game.user_id == @user.id}
   end
 
 end
