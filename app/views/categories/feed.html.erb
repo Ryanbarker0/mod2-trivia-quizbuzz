@@ -2,6 +2,43 @@
 
 <!-- <p><%= link_to "Play Now", categories_path, class: 'button is-large is-fullwidth is-success' %></p> -->
 
+
+
+
+
+<div class='level-left'>
+  <div class="section">
+
+    <h4 class='title' align='center'>Top Scorers</h4>
+
+      <table class="table is-striped is-hoverable" align='center'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Player</th>
+            <th>Streak</th>
+          </tr>
+        </thead>
+        <% @position = 0 %>
+          <% top_5_streaks_of_the_day.each do |game| %>
+
+            <tbody>
+              <tr>
+                <th><%= @position += 1 %></th>
+                <td><%= game.user.name %></td>
+                <td><%= game.streak %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="level">
   <div class="section"></div>
 
