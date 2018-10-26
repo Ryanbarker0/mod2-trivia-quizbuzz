@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
-  def home; end
+  def home
+    if current_user
+      redirect_to '/feed'
+    end 
+  end
 
   def current_user
     # checks if the user is currently logged in
@@ -26,4 +30,6 @@ class ApplicationController < ActionController::Base
       Answer.create(question_id: question_number.id, content: sanitize_correct_answer.gsub(/&amp;/, ' & '), correct: true)
     end
   end
+
+
 end

@@ -10,56 +10,63 @@
       <h2 class="title" align='center'>Feed</h2>
       <div class="section scroll">
 
-      <% Game.order("created_at").reverse.take(10).each do |game| %>
-        <hr>
-        <div class="box">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <article class="media">
-            <div class="media-left" ,="," align="center">
-              <figure class="image is-64x64">
-                <%= image_tag 'idea.png' %>
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong><%= link_to game.user.name, game.user %></strong>
-                  <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
-                  <br>
-                  <% if !!game.score %>
-                  Scored
+        <% Game.order("created_at").reverse.take(10).each do |game| %>
+          <hr>
+          <div class="box">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <article class="media">
+              <div class="media-left" ,="," align="center">
+                <figure class="image is-64x64">
                   <% case game.score %>
                     <% when (0..400) %>
-                      <span class="bad-game">
-                        <%= game.score %>
-                      </span>
+                      <%= image_tag 'thinking.png' %>
                       <% when (500..700) %>
-                        <span class="decent-game">
-                          <%= game.score %>
-                        </span>
+                        <%= image_tag 'brain.png' %>
                         <% when (800..1000) %>
-                          <span class="good-game">
-                            <%= game.score %>
-                          </span>
+                          <%= image_tag 'idea.png' %>
                         <% end %>
-                        points in
-                        <%= game.category.name %>!
-                    <% elsif !!game.streak %>
-                    Went on a
-                    <span class="streak">
-                      <%= game.streak %>
-                    </span>
-                    question streak in
-                      <%= game.category.name %>!
-                    <% end %>
-                      </p>
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          <strong><%= link_to game.user.name, game.user %></strong>
+                          <small><%= game.created_at.strftime("%d %b %Y %H:%M") %></small>
+                          <br>
+                          <% if !!game.score %>
+                            Scored
+                            <% case game.score %>
+                              <% when (0..400) %>
+                                <span class="bad-game">
+                                  <%= game.score %>
+                                </span>
+                                <% when (500..700) %>
+                                  <span class="decent-game">
+                                    <%= game.score %>
+                                  </span>
+                                  <% when (800..1000) %>
+                                    <span class="good-game">
+                                      <%= game.score %>
+                                    </span>
+                                  <% end %>
+                                  points in
+                                  <%= game.category.name %>!
+                                  <% elsif !!game.streak %>
+                                    Went on a
+                                    <span class="streak">
+                                      <%= game.streak %>
+                                    </span>
+                                    question streak in
+                                    <%= game.category.name %>!
+                                  <% end %>
+                                </p>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
-                </article>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+                </div>
 
-      <% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>
+                <% Game.find(1).created_at.strftime('%d %b %Y %H:%M') %>

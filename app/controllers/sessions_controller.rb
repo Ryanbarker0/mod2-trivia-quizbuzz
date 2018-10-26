@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = user.try(:authenticate, params[:user][:password])
     if @user
       session[:user_id] = @user.id
-      redirect_to categories_path
+      redirect_to feed_path
     else
       flash[:message] = "Invalid Username or Password"
       redirect_to login_path

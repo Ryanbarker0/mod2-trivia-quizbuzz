@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.delete
+    redirect_to root_path
   end
 
   def all_total_points
