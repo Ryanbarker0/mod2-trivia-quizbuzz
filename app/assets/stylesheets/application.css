@@ -69,7 +69,6 @@
  }
 
 .categories {
-    display: flex;
     flex-flow: wrap;
 }
 
