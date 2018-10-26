@@ -12,6 +12,11 @@
   </h4>
   <br>
 
+    <p align='center'>
+      <% if session[:streak] >= highest_streak_for_user_in_category %>
+        <%= "Personal high score - nice!" %>
+      <% end %>
+
     </p>
 
       <% session[:streak] = 0 %>

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  helper_method :score_response, :highest_score_for_user_in_category
+  helper_method :score_response, :highest_score_for_user_in_category, :highest_streak_for_user_in_category
 
   before_action :set_question, only: [:show]
   before_action :set_category, only: [:show]
@@ -37,7 +37,15 @@ class QuestionsController < ApplicationController
   #----------helper_methods--------#
 
   def highest_score_for_user_in_category
-    User.find(session[:user_id]).games.select{|game| game.category_id == session[:category]["id"] && !!game.score}.max_by{|category_game| category_game.score}.score
+    user = User.find(session[:user_id])
+    normal_user_games = user.games.select{|game| game.category_id == session[:category]["id"] && !!game.score}
+    normal_user_games.max_by{|category_game| category_game.score}.score
+  end
+
+  def highest_streak_for_user_in_category
+    user = User.find(session[:user_id])
+    streak_user_games = user.games.select{|game| game.category_id == session[:category]["id"] && !!game.streak}
+    streak_user_games.max_by{|category_game| category_game.streak}.streak
   end
 
   def score_response
