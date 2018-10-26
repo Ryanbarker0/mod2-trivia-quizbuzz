@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   end
 
   def top_5_streaks_of_the_day
-    Game.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).select{|game| !!game.streak }.sort_by{|game| game.streak}.reverse.take(5)
+    Game.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).select{|game| !!game.streak }.sort_by{|game| game.streak}.reverse.take(10)
   end
 
 
