@@ -1,7 +1,7 @@
 # README
 
 
-#QuizBuzz
+##QuizBuzz
 
 QuizBuzz is a simple quiz app developed with Ruby on Rails.
 
@@ -19,13 +19,6 @@ QuizBuzz is a simple quiz app developed with Ruby on Rails.
 
 Visit designated localhost server
 
-
-## Development
-```
-$ virtualenv foobar
-$ . foobar/bin/activate
-$ pip install -e .
-```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
