@@ -1,7 +1,7 @@
 # README
 
 
-##QuizBuzz
+## QuizBuzz
 
 QuizBuzz is a simple quiz app developed with Ruby on Rails.
 
