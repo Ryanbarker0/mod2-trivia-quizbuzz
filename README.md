@@ -1,35 +1,7 @@
 # README
 
-# API
 
-https://opentdb.com/api_config.php
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
-# Foobar ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+#QuizBuzz
 
 QuizBuzz is a simple quiz app developed with Ruby on Rails.
 
