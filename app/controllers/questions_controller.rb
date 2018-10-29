@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
 
   def hot_streak
     session[:hot_streak] = true
-    @question = Question.select{|question| question.category_id == session[:category]["id"]}[session[:question_ids].sample - 1]
+    @question = Question.find([session[:question_ids].sample - 1])
     redirect_to question_path(@question)
   end
 

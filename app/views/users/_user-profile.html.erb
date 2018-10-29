@@ -17,19 +17,18 @@
     <p class='menu-label'>Account Management</p>
 
     <ul class='menu-list'>
+      <li><%= link_to "All Friends", users_path%></li>
       <li>
         <a href="<%= edit_user_url %>">Update Password</a>
       </li>
       <li>
-
-        <a>Delete Account</a>
-=======
           <%= link_to 'Delete Account', user_url(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-
       </li>
       <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
-      <li><%= link_to "All Friends", users_path%></li>
     </ul>
+
+    <hr>
+    <p><a class="button is-info" href="/feed">Return to Feed</a></p>
 
   </aside>
 

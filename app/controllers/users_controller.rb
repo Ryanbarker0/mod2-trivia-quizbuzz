@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  helper_method :all_total_points, :highest_streak
+  helper_method :all_total_points, :highest_streak, :friends_leaderboard
 
   before_action :set_user, only: [:show, :edit, :update, :destroy, :all_total_points, :highest_streak, :set_user_games]
   before_action :set_user_games, only: [:all_total_points, :highest_streak]
@@ -28,18 +28,14 @@ class UsersController < ApplicationController
   end
 
   def friends
-    # binding.pry
     @user = User.find(session[:users_profile]["id"])
     Friend.create(user_id: session[:user_id], friend_id: @user.id)
-    # binding.pry
     redirect_to user_path(@user)
   end
 
   def unfriends
-    # binding.pry
     @user = User.find(session[:users_profile]["id"])
     User.find(session[:user_id]).friends.find_by(friend_id: @user.id).delete
-    # binding.pry
     redirect_to user_path(@user)
   end
 
@@ -81,6 +77,11 @@ class UsersController < ApplicationController
     else
       0
     end
+  end
+
+  def friends_leaderboard
+    friends_games = User.find(session[:user_id]).friends.map{|friend| User.find(friend.id).games.select{|game| !!game.streak}}
+    friends_games.flatten.sort_by{|game| game.streak}.reverse.take(10)
   end
 
   private

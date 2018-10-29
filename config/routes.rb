@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new', as: 'register'
   get '/friends', to: 'users#friends'
   get '/unfriends', to: 'users#unfriends'
+  get '/about', to: 'users#about'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -1,18 +1,28 @@
 
-<h3 class="title" align='center'>Friends</h3>
 
 
-<div class="column middle" align='center'>
-  <hr>
-  <div class="friends">
 
-<% User.find(session[:user_id]).friends.each do |friend| %>
-  <% @friend = (User.find(friend.friend_id)) %>
-
-<%= link_to @friend.name, user_path(@friend), class: "button category" %></li>
-
-<% end %>
-
-  </div>
+<!-- <nav class='level'> -->
+<h3 class='title' align='center'>Friends</h3>
 <hr>
-<p align='center'><%= link_to "Return to Feed", feed_path, class: 'button is-info' %></p>
+
+<div class="section">
+  <div class='column'>
+    <div align='center'>
+      <div class="friends">
+
+      <% User.find(session[:user_id]).friends.each do |friend| %>
+        <% @friend = (User.find(friend.friend_id)) %>
+
+        <%= link_to @friend.name, user_path(@friend), class: "button category" %></li>
+
+      <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<p align='center'><a class="button is-info" href="/feed">Return to Feed</a></p>
