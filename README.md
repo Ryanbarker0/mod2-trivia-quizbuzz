@@ -5,6 +5,10 @@
 
 QuizBuzz is a simple quiz app developed with Ruby on Rails.
 
+## Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eU9tCFCTNA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Installation
 
 ### Requirements
